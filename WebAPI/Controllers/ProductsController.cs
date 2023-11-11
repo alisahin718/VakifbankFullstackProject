@@ -1,0 +1,85 @@
+﻿using Business.Repositories.Service;
+using Entities.Models;
+using Microsoft.AspNetCore.Mvc;
+
+namespace WebAPI.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ProductsController : ControllerBase
+    {
+        private readonly IProductService _productService;
+
+        public ProductsController(IProductService productService)
+        {
+            _productService = productService;
+        }
+
+        [HttpPost("[action]")]
+        public async Task<IActionResult> Add(Product product)
+        {
+            var result = await _productService.Add(product);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [HttpPost("[action]")]
+        public async Task<IActionResult> Update(Product product)
+        {
+            var result = await _productService.Update(product);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [HttpPost("[action]")]
+        public async Task<IActionResult> Delete(Product product)
+        {
+            var result = await _productService.Delete(product);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetList()
+        {
+            var result = await _productService.GetList();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [HttpGet("[action]/{dealerId}")]
+        public async Task<IActionResult> GetProductList(int dealerId)
+        {
+            var result = await _productService.GetProductList(dealerId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [HttpGet("[action]/{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var result = await _productService.GetById(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result.Message);
+        }
+
+    }
+}

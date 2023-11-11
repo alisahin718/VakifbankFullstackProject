@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Business.Repositories.Messages
+{
+    public class DealerMessage
+    {
+        public static string Added = "Kayıt işlemi başarılı";
+        public static string Updated = "Güncelleme işlemi başarılı";
+        public static string ChangedPassword = "Şifre başarıyla değiştirildi";
+        public static string Deleted = "Silme işlemi başarılı";
+    }
+}
